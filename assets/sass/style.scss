@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+*,
+*::before,
+*::after {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+     font-family: "Inter", sans-serif;
+}
+
+.container {
+     .headerContainer {
+          header {
+               position: relative;
+               margin-bottom: 63px;
+               .headerBG {
+                    width: 100%;
+                    height: 208px;
+                    background-color: black;
+                    img {
+                         object-fit: cover;
+                         height: 208px;
+                         width: 100%;
+                         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    }
+               }
+
+               .titleandsearcbox {
+                    height: 144.55px;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    position: absolute;
+                    left: 44px;
+                    right: 42px;
+                    top: 82.45px;
+                    white-space: nowrap;
+                    @media (max-width: 320px) {
+                         gap: 14px;
+                    }
+                    .headerTitle {
+                         white-space: nowrap;
+                         font-weight: 800;
+                         color: #ffffff;
+                         display: flex;
+                         align-items: center;
+                         justify-content: space-between;
+                         @media (max-width: 320px) {
+                              flex-direction: column;
+                              gap: 15px;
+                         }
+                         h1 {
+                              letter-spacing: -0.045em;
+                              font-weight: 800;
+                              font-size: 2.67466875rem;
+                              text-transform: lowercase;
+                              &:first-letter {
+                                   text-transform: capitalize;
+                              }
+
+                              @media (max-width: 520px) {
+                                   font-size: 2rem;
+                              }
+                              @media (max-width: 430px) {
+                                   font-size: 1.6rem;
+                              }
+                              @media (max-width: 380px) {
+                                   font-size: 1.4rem;
+                              }
+                              @media (max-width: 360px) {
+                                   font-size: 1.3rem;
+                              }
+                              @media (max-width: 340px) {
+                                   font-size: 1.2rem;
+                              }
+
+                              @media (max-width: 320px) {
+                                   font-size: 1.6rem;
+                              }
+                              @media (max-width: 216px) {
+                                   font-size: 1.1rem;
+                              }
+                         }
+
+                         nav {
+                              ul {
+                                   li {
+                                        list-style: none;
+                                        a {
+                                             text-decoration: none;
+                                             color: white;
+                                             font-weight: 700;
+                                             font-size: 14px;
+                                             line-height: 20px;
+                                             text-transform: capitalize;
+                                             @media (max-width: 500px) {
+                                                  font-size: 0.75rem;
+                                             }
+                                             @media (max-width: 340px) {
+                                                  font-size: 0.65rem;
+                                             }
+                                        }
+                                   }
+                              }
+                         }
+                    }
+
+                    .searchBox {
+                         @media (max-width: 270px) {
+                              align-self: center;
+                         }
+                         fieldset {
+                              border: none;
+                              label {
+                                   height: 38px;
+                                   display: flex;
+                                   box-shadow: 0px 1px 2px rgb(0 0 0 / 5%);
+                                   background: #ffffff;
+                                   border-radius: 6px;
+                                   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+                                   @media (max-width: 389px) {
+                                        flex-direction: column;
+                                        height: 76px;
+                                   }
+
+                                   input {
+                                        width: 100%;
+                                        height: 38px;
+                                        border: none;
+                                        background: url("/assets/images/search.svg") no-repeat left center;
+                                        background-size: 16px 16px;
+                                        background-position: 13px;
+                                        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+                                        padding-left: 40px;
+                                        font-family: "Inter";
+                                        font-style: normal;
+                                        font-weight: 500;
+                                        font-size: 14px;
+                                        color: #6b7280;
+
+                                        &:focus {
+                                             outline: none;
+                                        }
+                                        &:autofill {
+                                             border: 3px solid rgb(129, 121, 121);
+                                             border-top-left-radius: 6px;
+                                             border-bottom-left-radius: 6px;
+                                        }
+                                        @media (max-width: 389px) {
+                                             &::placeholder {
+                                                  text-align: center;
+                                             }
+                                        }
+
+                                        @media (max-width: 264px) {
+                                             &::placeholder {
+                                                  font-size: 4vw;
+                                             }
+                                        }
+                                   }
+
+                                   button {
+                                        cursor: pointer;
+                                        width: 20%;
+                                        min-width: 120px;
+                                        height: 38px;
+                                        background: #f9fafb;
+                                        border: 1px solid #d1d5db;
+                                        border-radius: 0px 6px 6px 0px;
+                                        font-family: "Inter";
+                                        font-style: normal;
+                                        font-weight: 500;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        color: #374151;
+                                        @media (max-width: 389px) {
+                                             width: 100%;
+                                             border-radius: 0px 0 6px 6px;
+                                        }
+                                   }
+                              }
+                         }
+                    }
+               }
+          }
+     }
+
+     main {
+          margin: 0 44px;
+          @media (max-width: 190px) {
+               margin: 0;
+               text-align: center;
+          }
+          .main-container {
+               .content {
+                    display: flex;
+                    gap: 21px;
+                    padding-bottom: 20.59px;
+                    margin-bottom: 21px;
+                    border-bottom: 1.5px solid #e5e7eb;
+                    @media (min-width: 1024px) {
+                         align-items: center;
+                         justify-content: center;
+                    }
+                    .description {
+                         display: flex;
+                         flex-direction: column;
+                         .title {
+                              display: flex;
+                              gap: 0.5em;
+                              margin-bottom: 11px;
+                              h3 {
+                                   font-weight: 600;
+                                   font-size: 1.125rem;
+                                   line-height: 20px;
+                                   color: #000000;
+                              }
+
+                              span {
+                                   font-weight: 400;
+                                   font-size: 12px;
+                                   line-height: 20px;
+                                   color: #111827;
+                                   img {
+                                        vertical-align: text-top;
+                                   }
+                              }
+                         }
+                         .time {
+                              display: flex;
+                              gap: 19px;
+                              margin-bottom: 8px;
+
+                              span {
+                                   font-weight: 400;
+                                   font-size: 0.75rem;
+                                   line-height: 20px;
+                                   color: #111827;
+                                   img {
+                                        vertical-align: text-bottom;
+                                   }
+                              }
+                         }
+
+                         .filmContent {
+                              font-weight: 400;
+                              font-size: 0.875rem;
+                              line-height: 20px;
+                              color: #6b7280;
+                         }
+                    }
+               }
+          }
+     }
+}
+
+//for common use media queries
+
+.content,
+.description,
+.title,
+.time,
+.filmContent {
+     @media (max-width: 496px) {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+     }
+}
