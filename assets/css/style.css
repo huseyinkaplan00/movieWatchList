@@ -44,12 +44,15 @@ body {
   }
 }
 .container .headerContainer header .titleandsearcbox .headerTitle {
-  white-space: nowrap;
-  font-weight: 800;
-  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.container .headerContainer header .titleandsearcbox .headerTitle a {
+  text-decoration: none;
+  white-space: nowrap;
+  font-weight: 800;
+  color: #ffffff;
 }
 @media (max-width: 320px) {
   .container .headerContainer header .titleandsearcbox .headerTitle {
@@ -218,6 +221,16 @@ body {
     text-align: center;
   }
 }
+.container main .main-container {
+  position: relative;
+}
+.container main .main-container .loading {
+  width: 200px;
+  position: fixed;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+}
 .container main .main-container .content {
   display: flex;
   gap: 21px;
@@ -225,10 +238,12 @@ body {
   margin-bottom: 21px;
   border-bottom: 1.5px solid #e5e7eb;
 }
+.container main .main-container .content .image img {
+  width: 150px;
+}
 @media (min-width: 1024px) {
   .container main .main-container .content {
     align-items: center;
-    justify-content: center;
   }
 }
 .container main .main-container .content .description {
@@ -261,12 +276,15 @@ body {
   margin-bottom: 8px;
 }
 .container main .main-container .content .description .time span {
+  display: flex;
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 20px;
   color: #111827;
+  white-space: nowrap;
 }
 .container main .main-container .content .description .time span img {
+  margin-right: 5px;
   vertical-align: text-bottom;
 }
 .container main .main-container .content .description .filmContent {
@@ -274,6 +292,17 @@ body {
   font-size: 0.875rem;
   line-height: 20px;
   color: #6b7280;
+}
+.container main .main-container .content .description .filmContent p span {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: #262627;
+  font-weight: 600;
+  margin-left: 10px;
+  background: rgba(0, 0, 0, 0.1411764706);
+  padding: 2px 10px;
+  border-radius: 5px;
 }
 
 @media (max-width: 496px) {
