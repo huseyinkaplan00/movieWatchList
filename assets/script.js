@@ -19,6 +19,7 @@ searchBtn.addEventListener("click", async () => {
           const data = await res.json()
 
           if (data.Response === "True") {
+               movies = []
                data.Search.map((movie) => {
                     fetch(`https://www.omdbapi.com/?apikey=4c25c679&i=${movie.imdbID}&plot=full`)
                          .then((res) => res.json())
@@ -26,7 +27,6 @@ searchBtn.addEventListener("click", async () => {
                               movies.push(new Movie(data))
                               getFilm()
                          })
-                    movies = []
                })
           } else {
                postContainer.innerHTML = "We can't find that "

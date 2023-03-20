@@ -3,13 +3,15 @@ import { movies } from "./script.js"
 class Movie {
      constructor(data) {
           Object.assign(this, data)
+          //döndürülen her bir objecye bir uuid verdik
+          this.uuid = uuidv4()
      }
 }
 
 function getRenderHTML(data) {
-     let { Title, Poster, Runtime, Genre, Plot, imdbRating } = data
-     const plotSize = Plot.split(" ").length
+     let { Title, Poster, Runtime, Genre, Plot, imdbRating, uuid } = data
 
+     const plotSize = Plot.split(" ").length
      if (imdbRating === "N/A" || imdbRating === undefined) {
           imdbRating = `😭`
      } else if (Poster === "N/A" || Poster === 0 || Poster === "" || Poster === undefined || !Poster) {
@@ -29,7 +31,7 @@ function getRenderHTML(data) {
      }
 
      return `
-          <div class="content" id="${uuidv4()}"  >
+          <div class="content" id="${uuid}"  >
              <div class="image" >
                   <img src="${Poster}"  alt="film image" />
              </div>
@@ -41,7 +43,7 @@ function getRenderHTML(data) {
                   <div class="time">
                        <span>${Runtime}</span>
                        <span>${Genre}</span>
-                       <span data-add-icon="${Title}"><img  src="./assets/images/+.svg">Watchlist</img></span>
+                       <span data-add="${uuid}"><img  src="./assets/images/+.svg">Watchlist</img></span>
                   </div>
                   <div class="filmContent">
                        <p>${Plot}</p>
@@ -49,17 +51,19 @@ function getRenderHTML(data) {
              </div>
         </div>
              `
-
-     html
 }
+
 document.addEventListener("click", (e) => {
-     if (e.target.dataset.addIcon) {
-          console.log(e.target.dataset.addIcon)
+     if (e.target.dataset.add) {
+          add(e.target.dataset.add)
      }
 })
 
-const addContent = (contentId) => {
-     movies["uuid"] = contentId
+const add = (id) => {
+     const target = movies.filter((data) => {
+          return data.uuid === id
+     })[0]
+     console.log(target.Title)
 }
 
 export { Movie, getRenderHTML }
