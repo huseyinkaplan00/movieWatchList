@@ -5,23 +5,30 @@ class Movie {
           Object.assign(this, data)
           //döndürülen her bir objecye bir uuid verdik
           this.uuid = uuidv4()
+          this.isClicked = false
+          this.uuidSpan = uuidv4()
+          this.uuidMore = uuidv4()
+          this.uuidAdd = uuidv4()
      }
 }
 
 function getRenderHTML(data) {
-     let { Title, Poster, Runtime, Genre, Plot, imdbRating, uuid } = data
+     let { Title, Poster, Runtime, Genre, Plot, imdbRating, uuid, uuidSpan, uuidMore, uuidAdd } = data
 
-     const plotSize = Plot.split(" ").length
-     if (imdbRating === "N/A" || imdbRating === undefined) {
-          imdbRating = `😭`
-     } else if (Poster === "N/A" || Poster === 0 || Poster === "" || Poster === undefined || !Poster) {
-          Poster = `https://media.giphy.com/media/l2Je66zG6mAAZxgqI/giphy.gif`
-     } else if (Plot === "N/A" || Plot === undefined) {
-          Plot = "Unknown 📃📄📑"
-     } else if (plotSize) {
-          let first50 = Plot.substring(0, 100)
-          Plot = `${first50}  <span>Read More...</span> `
-          let full = Plot.substring(100, plotSize)
+     let posterControl = ""
+     let imdbRatingControl = ""
+     let PlotControl = Plot
+     if (Poster === "N/A" || Poster === 0 || Poster === "" || Poster === undefined || !Poster) {
+          posterControl = `https://media.giphy.com/media/l2Je66zG6mAAZxgqI/giphy.gif`
+     } else {
+          posterControl = Poster
+     }
+
+     const plotSize = PlotControl.split(" ").length
+
+     if (plotSize) {
+          let first50 = PlotControl.substring(0, 100)
+          PlotControl = `${first50}  <span data-more="${uuidMore}">Read More...</span> `
      } else if (Runtime === "N/A" || Runtime === undefined) {
           Runtime = "Unknown runtime ⌚"
      } else if (Genre === "N/A" || Genre === undefined) {
@@ -30,40 +37,116 @@ function getRenderHTML(data) {
           imdbRating = "Unknown ⌚"
      }
 
-     return `
+     if (imdbRating === "N/A" || imdbRating === undefined) {
+          imdbRatingControl = `😭`
+     } else {
+          imdbRatingControl = imdbRating
+     }
+
+     if (Plot === "N/A" || Plot === undefined) {
+          PlotControl = "Unknown 📃📄📑"
+     }
+
+     let html = `
           <div class="content" id="${uuid}"  >
              <div class="image" >
-                  <img src="${Poster}"  alt="film image" />
+                  <img src="${posterControl}"  alt="film image" />
              </div>
              <div class="description">
                   <div class="title">
                        <h3>${Title}</h3>
-                       <span title=${imdbRating}  id="spanRate"> <img src="./assets/images/star.svg" />${imdbRating}</span>
+                       <span title=${imdbRatingControl}  id="spanRate"> <img src="./assets/images/star.svg" />${imdbRatingControl}</span>
                   </div>
                   <div class="time">
                        <span>${Runtime}</span>
                        <span>${Genre}</span>
-                       <span data-add="${uuid}"><img  src="./assets/images/+.svg">Watchlist</img></span>
+                       <span id="${uuidSpan}" data-add="${uuidAdd}"><img  src="./assets/images/+.svg">Watchlist</img></span>
                   </div>
-                  <div class="filmContent">
-                       <p>${Plot}</p>
+                  <div id="${uuidMore}" class="filmContent">
+                      <p>${PlotControl}</p> 
                   </div>
              </div>
         </div>
              `
+
+     return html
 }
 
+//clicking events on document
 document.addEventListener("click", (e) => {
      if (e.target.dataset.add) {
           add(e.target.dataset.add)
+     } else if (e.target.dataset.more) {
+          more(e.target.dataset.more)
      }
 })
 
 const add = (id) => {
+     const container = document.getElementById("containerTwo")
      const target = movies.filter((data) => {
-          return data.uuid === id
+          return data.uuidAdd === id
      })[0]
-     console.log(target.Title)
+
+     // object destructuring on target object
+     let { Title, Poster, Runtime, Genre, Plot, imdbRating, uuid, isClicked, uuidSpan } = target
+     // nodelistin idlerini aldık,
+     // Array.from methodu ile queryselectorall ile aldığımız nodelisti array e çevirdik
+     let content = Array.from(document.querySelectorAll(`.content`))
+     // tıklanan arrayin id si ile eşleşen contenti aldık
+     const deneme = content.filter((item) => item.id === target.uuid)
+
+     let targetDiv = deneme[0]
+
+     localStorage.setItem("contentDiv", targetDiv.outerHTML)
+     document.querySelector(".main-container-three").innerHTML += localStorage.getItem("contentDiv")
+     // add and remove buttons
+     if (isClicked === true) {
+          document.getElementById(`${uuidSpan}`).innerHTML = `<img  src="./assets/images/+.svg">Watchlist</img>`
+          target.isClicked = false
+     } else if (isClicked === false) {
+          document.getElementById(`${uuidSpan}`).innerHTML = `<img  src="./assets/images/-.svg">Remove</img>`
+          target.isClicked = true
+     }
+
+     // editing came data
+     let posterControl = ""
+     if (Poster === "N/A" || Poster === 0 || Poster === "" || Poster === undefined || !Poster) {
+          posterControl = `https://media.giphy.com/media/l2Je66zG6mAAZxgqI/giphy.gif`
+     } else {
+          posterControl = Poster
+     }
+
+     //      return `
+     //      <div class="content" id="${uuid}"  >
+     //      <div class="image" >
+     //           <img src="${posterControl}"  alt="film image" />
+     //      </div>
+     //      <div class="description">
+     //           <div class="title">
+     //                <h3>${Title}</h3>
+     //                <span title=${imdbRating}  id="spanRate"> <img src="./assets/images/star.svg" />${imdbRating}</span>
+     //           </div>
+     //           <div class="time">
+     //                <span>${Runtime}</span>
+     //                <span>${Genre}</span>
+     //                <span data-add="${uuid}"><img  src="./assets/images/+.svg">Watchlist</img></span>
+     //           </div>
+     //           <div class="filmContent">
+     //                <p>${Plot}</p>
+     //           </div>
+     //      </div>
+     // </div>
+
+     //      `
+}
+
+//read more feature's function
+const more = (item) => {
+     const targetItem = movies.filter((more) => more.uuidMore === item)[0]
+
+     let { Plot, uuidMore } = targetItem
+
+     document.getElementById(`${uuidMore}`).innerHTML = `<p>${Plot}</p> `
 }
 
 export { Movie, getRenderHTML }
