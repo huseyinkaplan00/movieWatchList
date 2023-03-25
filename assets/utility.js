@@ -81,8 +81,11 @@ document.addEventListener("click", (e) => {
      }
 })
 
+// eğer add fonksiyonu içerisinde tanımlayıp pushlamayı da o fonksiyon içerisinde yaparsan her tiklamada tekrar tekrar yeni bir array oluşturur ve 0. indexine her seferinde farkli bir öğe atar o yüzden array tanimlamasini event dişinda yapmalisin
+const moviesArray = []
+
 const add = (id) => {
-     const container = document.getElementById("containerTwo")
+     // catching clicked id's array
      const target = movies.filter((data) => {
           return data.uuidAdd === id
      })[0]
@@ -93,12 +96,18 @@ const add = (id) => {
      // Array.from methodu ile queryselectorall ile aldığımız nodelisti array e çevirdik
      let content = Array.from(document.querySelectorAll(`.content`))
      // tıklanan arrayin id si ile eşleşen contenti aldık
-     const deneme = content.filter((item) => item.id === target.uuid)
+     const contentIdCheck = content.filter((item) => item.id === target.uuid)
 
-     let targetDiv = deneme[0]
+     // setting to local storage
 
-     localStorage.setItem("contentDiv", targetDiv.outerHTML)
-     document.querySelector(".main-container-three").innerHTML += localStorage.getItem("contentDiv")
+     let targetDiv = contentIdCheck[0].outerHTML
+
+     moviesArray.push(targetDiv)
+
+     console.log(moviesArray)
+
+     localStorage.setItem("contentDiv", JSON.stringify(moviesArray))
+
      // add and remove buttons
      if (isClicked === true) {
           document.getElementById(`${uuidSpan}`).innerHTML = `<img  src="./assets/images/+.svg">Watchlist</img>`
