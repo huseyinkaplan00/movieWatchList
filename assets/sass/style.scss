@@ -99,11 +99,21 @@ body {
                                              font-size: 14px;
                                              line-height: 20px;
                                              text-transform: capitalize;
+
                                              @media (max-width: 500px) {
                                                   font-size: 0.75rem;
                                              }
                                              @media (max-width: 340px) {
                                                   font-size: 0.65rem;
+                                             }
+                                        }
+
+                                        .glow {
+                                             animation: 2s glow ease-in-out infinite;
+                                             @keyframes glow {
+                                                  50% {
+                                                       text-shadow: 0px 0px 12px white;
+                                                  }
                                              }
                                         }
                                    }

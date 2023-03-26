@@ -82,7 +82,8 @@ document.addEventListener("click", (e) => {
 })
 
 // eğer add fonksiyonu içerisinde tanımlayıp pushlamayı da o fonksiyon içerisinde yaparsan her tiklamada tekrar tekrar yeni bir array oluşturur ve 0. indexine her seferinde farkli bir öğe atar o yüzden array tanimlamasini event dişinda yapmalisin
-const moviesArray = []
+
+let moviesArray = []
 
 const add = (id) => {
      // catching clicked id's array
@@ -101,11 +102,10 @@ const add = (id) => {
      // setting to local storage
 
      let targetDiv = contentIdCheck[0].outerHTML
+     //getting existing movies from local storage per click or creating an empty array
+     let moviesArray = JSON.parse(localStorage.getItem("contentDiv")) || []
 
-     moviesArray.push(targetDiv)
-
-     console.log(moviesArray)
-
+     //storing per click updated  movies array in local storage
      localStorage.setItem("contentDiv", JSON.stringify(moviesArray))
 
      // add and remove buttons
@@ -115,8 +115,13 @@ const add = (id) => {
      } else if (isClicked === false) {
           document.getElementById(`${uuidSpan}`).innerHTML = `<img  src="./assets/images/-.svg">Remove</img>`
           target.isClicked = true
+
+          moviesArray.unshift(targetDiv)
+
+          localStorage.setItem("contentDiv", JSON.stringify(moviesArray))
      }
 
+     
      // editing came data
      let posterControl = ""
      if (Poster === "N/A" || Poster === 0 || Poster === "" || Poster === undefined || !Poster) {

@@ -125,6 +125,14 @@ body {
     font-size: 0.65rem;
   }
 }
+.container .headerContainer header .titleandsearcbox .headerTitle nav ul li .glow {
+  animation: 2s glow ease-in-out infinite;
+}
+@keyframes glow {
+  50% {
+    text-shadow: 0px 0px 12px white;
+  }
+}
 @media (max-width: 270px) {
   .container .headerContainer header .titleandsearcbox .searchBox {
     align-self: center;

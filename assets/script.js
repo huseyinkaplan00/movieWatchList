@@ -3,8 +3,8 @@ import { Movie, getRenderHTML } from "./utility.js"
 const postContainer = document.querySelector(".main-container")
 
 const input = document.getElementById("input")
+
 const searchBtn = document.getElementById("searchBtn")
-document.body.addEventListener("click", (e) => {})
 
 let movies = []
 searchBtn.addEventListener("click", async () => {
