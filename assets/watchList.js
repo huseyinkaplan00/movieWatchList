@@ -9,7 +9,7 @@ const getWatchList = () => {
                const watchList = JSON.parse(localStorage.getItem("contentDiv"))
                let posterControl = ""
                for (let movie of watchList) {
-                    // editing came data
+                    //  editing came data
 
                     if (movie.Poster === "N/A" || movie.Poster === 0 || movie.Poster === "" || movie.Poster === undefined || !movie.Poster) {
                          posterControl = `https://media.giphy.com/media/l2Je66zG6mAAZxgqI/giphy.gif`
@@ -100,6 +100,3 @@ const removeButton = (targetId) => {
 const clearAll = () => {
      return localStorage.clear()
 }
-
-
-
