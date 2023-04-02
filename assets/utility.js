@@ -93,7 +93,6 @@ const add = (id) => {
      // nodelistin idlerini aldık,
      // Array.from methodu ile queryselectorall ile aldığımız nodelisti array e çevirdik
      let content = Array.from(document.querySelectorAll(`.content`))
-     // tıklanan arrayin id si ile eşleşen contenti aldık
 
      // setting to local storage
 
