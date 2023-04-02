@@ -6,7 +6,7 @@
      padding: 0;
      box-sizing: border-box;
 }
-*:not(input.field) {
+*:not(input) {
      -webkit-user-select: none;
      -khtml-user-select: none;
      -moz-user-select: none;
@@ -14,14 +14,14 @@
      user-select: none;
 }
 //user cant select or drag any photos
-img {
-     user-drag: none;
-     -webkit-user-drag: none;
-     user-select: none;
-     -moz-user-select: none;
-     -webkit-user-select: none;
-     -ms-user-select: none;
-}
+// img {
+//      user-drag: none;
+//      -webkit-user-drag: none;
+//      user-select: none;
+//      -moz-user-select: none;
+//      -webkit-user-select: none;
+//      -ms-user-select: none;
+// }
 
 body {
      font-family: "Inter", sans-serif;
