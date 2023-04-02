@@ -5,11 +5,14 @@
      margin: 0;
      padding: 0;
      box-sizing: border-box;
-     -webkit-user-select: none; /* Safari */
-     -ms-user-select: none; /* IE 10 and IE 11 */
-     user-select: none; /* Standard syntax */
 }
-
+*:not(input.field) {
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+}
 //user cant select or drag any photos
 img {
      user-drag: none;

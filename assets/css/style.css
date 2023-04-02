@@ -5,9 +5,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-user-select: none; /* Safari */ /* IE 10 and IE 11 */
+}
+
+*:not(input.field) {
+  -webkit-user-select: none;
   -moz-user-select: none;
-       user-select: none; /* Standard syntax */
+  user-select: none;
 }
 
 img {
