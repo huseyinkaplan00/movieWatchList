@@ -11,6 +11,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+#containerTwo {
+  align-items: flex-start;
+}
+
 .container .headerContainer header {
   position: relative;
   margin-bottom: 63px;

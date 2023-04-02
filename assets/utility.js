@@ -6,6 +6,7 @@ class Movie {
           //döndürülen her bir objecye bir uuid verdik
           this.uuid = uuidv4()
           this.isClicked = false
+          this.isRemoved = false
           this.uuidSpan = uuidv4()
           this.uuidMore = uuidv4()
           this.uuidAdd = uuidv4()
@@ -101,7 +102,6 @@ const add = (id) => {
 
      // setting to local storage
 
-     let targetDiv = contentIdCheck[0].outerHTML
      //getting existing movies from local storage per click or creating an empty array
      let moviesArray = JSON.parse(localStorage.getItem("contentDiv")) || []
 
@@ -115,13 +115,10 @@ const add = (id) => {
      } else if (isClicked === false) {
           document.getElementById(`${uuidSpan}`).innerHTML = `<img  src="./assets/images/-.svg">Remove</img>`
           target.isClicked = true
-
-          moviesArray.unshift(targetDiv)
-
+          moviesArray.unshift(target)
           localStorage.setItem("contentDiv", JSON.stringify(moviesArray))
      }
 
-     
      // editing came data
      let posterControl = ""
      if (Poster === "N/A" || Poster === 0 || Poster === "" || Poster === undefined || !Poster) {
@@ -129,29 +126,6 @@ const add = (id) => {
      } else {
           posterControl = Poster
      }
-
-     //      return `
-     //      <div class="content" id="${uuid}"  >
-     //      <div class="image" >
-     //           <img src="${posterControl}"  alt="film image" />
-     //      </div>
-     //      <div class="description">
-     //           <div class="title">
-     //                <h3>${Title}</h3>
-     //                <span title=${imdbRating}  id="spanRate"> <img src="./assets/images/star.svg" />${imdbRating}</span>
-     //           </div>
-     //           <div class="time">
-     //                <span>${Runtime}</span>
-     //                <span>${Genre}</span>
-     //                <span data-add="${uuid}"><img  src="./assets/images/+.svg">Watchlist</img></span>
-     //           </div>
-     //           <div class="filmContent">
-     //                <p>${Plot}</p>
-     //           </div>
-     //      </div>
-     // </div>
-
-     //      `
 }
 
 //read more feature's function
