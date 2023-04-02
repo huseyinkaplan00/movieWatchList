@@ -5,6 +5,19 @@
      margin: 0;
      padding: 0;
      box-sizing: border-box;
+     -webkit-user-select: none; /* Safari */
+     -ms-user-select: none; /* IE 10 and IE 11 */
+     user-select: none; /* Standard syntax */
+}
+
+//user cant select or drag any photos
+img {
+     user-drag: none;
+     -webkit-user-drag: none;
+     user-select: none;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+     -ms-user-select: none;
 }
 
 body {
@@ -164,11 +177,6 @@ body {
                                              border: 3px solid rgb(129, 121, 121);
                                              border-top-left-radius: 6px;
                                              border-bottom-left-radius: 6px;
-                                        }
-                                        @media (max-width: 389px) {
-                                             &::placeholder {
-                                                  text-align: center;
-                                             }
                                         }
 
                                         @media (max-width: 264px) {

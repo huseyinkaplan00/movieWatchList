@@ -73,7 +73,7 @@ function getFilm() {
      })
 }
 
-//getting  random backgrounds photos from unsplash api
+//getting random backgrounds photos from unsplash api
 fetch("https://api.unsplash.com/photos/random/?client_id=pVVx382GHiGR3xCEd0DxcestWfJYO8BlUCSJ50PyGHA&query=film&count=1")
      .then((res) => {
           console.log(res.status)
