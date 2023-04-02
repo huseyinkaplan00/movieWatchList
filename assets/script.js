@@ -73,15 +73,16 @@ function getFilm() {
      })
 }
 
+//getting random backgrounds photos from unsplash api
 fetch("https://api.unsplash.com/photos/random/?client_id=pVVx382GHiGR3xCEd0DxcestWfJYO8BlUCSJ50PyGHA&query=film&count=1")
-     .then(res => {
+     .then((res) => {
           console.log(res.status)
-          if(!res.ok){
-               throw Error ('something went wrong with unsplash api')
+          if (!res.ok) {
+               throw Error("something went wrong with unsplash api")
           }
           return res.json()
-     })     
-     .then(data => {
+     })
+     .then((data) => {
           const backgroundImageUrl = data[0].urls.regular
           document.querySelector(".headerBG").innerHTML = `
           <img
@@ -91,20 +92,15 @@ fetch("https://api.unsplash.com/photos/random/?client_id=pVVx382GHiGR3xCEd0Dxces
      />
           `
      })
-     .catch(err => 
-          console.log(err),
-         document.querySelector(".headerBG").innerHTML = `
+     .catch(
+          (err) => console.log(err),
+          (document.querySelector(".headerBG").innerHTML = `
           <img
           class="headerBackground"
           src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
           alt=""
      />
-          `
-          
-          )
-
-
-
-
+          `)
+     )
 
 export { movies }
