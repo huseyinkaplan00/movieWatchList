@@ -122,7 +122,7 @@ const add = (id) => {
      }
 }
 
-//read more feature's function
+//read more  feature's function
 const more = (item) => {
      const targetItem = movies.filter((more) => more.uuidMore === item)[0]
 

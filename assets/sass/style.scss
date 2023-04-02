@@ -13,6 +13,15 @@
      -ms-user-select: none;
      user-select: none;
 }
+
+input,
+textarea {
+     -webkit-user-select: text;
+     -khtml-user-select: text;
+     -moz-user-select: text;
+     -ms-user-select: text;
+     user-select: text;
+}
 //user cant select or drag any photos
 // img {
 //      user-drag: none;
