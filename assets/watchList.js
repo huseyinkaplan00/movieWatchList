@@ -3,15 +3,24 @@ let content = JSON.parse(localStorage.getItem("contentDiv"))
 
 const getWatchList = () => {
      let watchListHtml = ``
+
      if (content.length > 0) {
           try {
                const watchList = JSON.parse(localStorage.getItem("contentDiv"))
+               let posterControl = ""
                for (let movie of watchList) {
+                    // editing came data
+
+                    if (movie.Poster === "N/A" || movie.Poster === 0 || movie.Poster === "" || movie.Poster === undefined || !movie.Poster) {
+                         posterControl = `https://media.giphy.com/media/l2Je66zG6mAAZxgqI/giphy.gif`
+                    } else {
+                         posterControl = movie.Poster
+                    }
                     watchListHtml += `
      
                <div class="content" id="${movie.uuid}"  >
                <div class="image" >
-                    <img src="${movie.Poster}"  alt="film image" />
+                    <img src="${posterControl}"  alt="film image" />
                </div>
                <div class="description">
                     <div class="title">

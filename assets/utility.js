@@ -3,7 +3,7 @@ import { movies } from "./script.js"
 class Movie {
      constructor(data) {
           Object.assign(this, data)
-          //döndürülen her bir objecye bir uuid verdik
+
           this.uuid = uuidv4()
           this.isClicked = false
           this.isRemoved = false
@@ -82,10 +82,6 @@ document.addEventListener("click", (e) => {
      }
 })
 
-// eğer add fonksiyonu içerisinde tanımlayıp pushlamayı da o fonksiyon içerisinde yaparsan her tiklamada tekrar tekrar yeni bir array oluşturur ve 0. indexine her seferinde farkli bir öğe atar o yüzden array tanimlamasini event dişinda yapmalisin
-
-let moviesArray = []
-
 const add = (id) => {
      // catching clicked id's array
      const target = movies.filter((data) => {
@@ -93,12 +89,11 @@ const add = (id) => {
      })[0]
 
      // object destructuring on target object
-     let { Title, Poster, Runtime, Genre, Plot, imdbRating, uuid, isClicked, uuidSpan } = target
+     let { Poster, isClicked, uuidSpan } = target
      // nodelistin idlerini aldık,
      // Array.from methodu ile queryselectorall ile aldığımız nodelisti array e çevirdik
      let content = Array.from(document.querySelectorAll(`.content`))
      // tıklanan arrayin id si ile eşleşen contenti aldık
-     const contentIdCheck = content.filter((item) => item.id === target.uuid)
 
      // setting to local storage
 
