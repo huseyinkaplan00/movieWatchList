@@ -24,7 +24,7 @@ The Movie Search application is a web-based tool that utilizes the OMDB API to r
 To run the Movie Search application locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/huseyinkaplan00/movieWatchList`
-2. Navigate to the project directory: `cd movie-search`
+2. Navigate to the project directory: `cd movieWatchList`
 3. Open the index.html file in your web browser.
 
 ## Usage
