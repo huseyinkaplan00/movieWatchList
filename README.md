@@ -8,7 +8,7 @@ This repository contains a Movie Search application built using JavaScript. The 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 The Movie Search application is a web-based tool that utilizes the OMDB API to retrieve movie data. Users can search for movies by title and view information such as the movie poster, runtime, genre, and IMDB rating. They can also add movies to their watchlist for future reference.
