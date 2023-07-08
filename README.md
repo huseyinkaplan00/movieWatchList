@@ -2,7 +2,7 @@
 
 This repository contains a Movie Search application built using JavaScript. The application allows users to search for movies, view movie details, and add movies to their watchlist.
 
-## Table of Contents
+## Table of Contents 
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
